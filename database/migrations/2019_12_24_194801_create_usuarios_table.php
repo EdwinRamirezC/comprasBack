@@ -18,6 +18,8 @@ class CreateUsuariosTable extends Migration
             $table->bigInteger('cedula');
             $table->string('nombre');
             $table->string('apellido');
+            $table->string('usuario');
+            $table->string('password');
             $table->enum('tipo', ['tecnico']);
 
             $table->softDeletes();

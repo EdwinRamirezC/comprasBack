@@ -16,10 +16,13 @@ class Orden extends Model
         'id',
         'orden',
         'cliente',
+        'nombre',
         'usuario_id',
         'articulos'
     ];
-
+    protected $casts = [
+        'articulos' => 'array',
+    ];
     public function usuario()
     {
         return $this->belongsTo(Usuario::class);

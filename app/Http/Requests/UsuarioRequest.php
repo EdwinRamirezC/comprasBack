@@ -21,7 +21,8 @@ class UsuarioRequest extends BaseFormRequest
         // se crea la url del tweet a partir de la informacion recibida
         $this->merge([
             "id" =>isset($this['id'])? $this['id'] : null,
-            'tipo' =>"tecnico"
+            'tipo' =>"tecnico",
+            "password" => bcrypt($this->password)
         ]);
 
     }
@@ -37,6 +38,8 @@ class UsuarioRequest extends BaseFormRequest
             'nombre' => 'required',
             'apellido' => 'required',
             'cedula'  => 'required',
+            'usuario'  => 'required',
+            'password'  => 'required',
         ];
     }
 
@@ -44,8 +47,10 @@ class UsuarioRequest extends BaseFormRequest
     {
         return [
             'nombre.required' => 'El nombre es obligatorio.',
-            'apellido.required' => 'el apellido es obligatorio.',
+            'apellido.required' => 'El apellido es obligatorio.',
             'cedula.required' => 'La cedula es obligatoria.',
+            'usuario.required' => 'El nombre de usuario es obligatorio.',
+            'password.required' => 'El password es obligatorio.',
         ];
     }
 }

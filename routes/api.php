@@ -20,13 +20,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1'], function () {
     Route::group(['prefix' => 'usuario'], function () {
         Route::post('', 'UsuarioController@store');
-        Route::get('{id}', 'UsuarioController@consultarUsuario');
+        Route::group(['prefix' => 'login'], function () {
+            Route::post('', 'UsuarioController@consultarUsuario');
+        });
     });
     Route::group(['prefix' => 'orden'], function () {
         Route::post('', 'OrdenController@store');
         Route::get('{id}', 'OrdenController@search');
         Route::group(['prefix' => 'listar'], function () {
             Route::get('{id}', 'OrdenController@listarOrdenes');
+        });
+        Route::group(['prefix' => 'reporte'], function () {
+            Route::post('', 'OrdenController@reporte');
         });
     });
 });

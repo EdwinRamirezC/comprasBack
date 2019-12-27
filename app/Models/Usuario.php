@@ -13,7 +13,9 @@ class Usuario extends Model
         'nombre',
         'apellido',
         'cedula',
-        'tipo'
+        'tipo',
+        'usuario',
+        'password'
     ];
 
     public function ordenes()

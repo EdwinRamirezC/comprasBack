@@ -17,6 +17,7 @@ class CreateOrdenesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('orden');
             $table->bigInteger('cliente');
+            $table->string('nombre');
             $table->bigInteger('usuario_id')->unsigned();
             $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->binary('articulos');

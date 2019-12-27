@@ -11,9 +11,8 @@ class OrdenRequest extends BaseFormRequest
     {
         $this->merge([
             "id" =>isset($this['id'])? $this['id'] : null,
-            "articulos"=>json_encode($this->items)
+            // "articulos"=>json_encode($this['articulos'])
         ]);
-
     }
     /**
      * Determine if the user is authorized to make this request.
@@ -35,6 +34,7 @@ class OrdenRequest extends BaseFormRequest
         return [
             'orden' => 'required',
             'cliente' => 'required',
+            'nombre' => 'required',
             'usuario_id'  => 'required',
         ];
     }
@@ -44,6 +44,7 @@ class OrdenRequest extends BaseFormRequest
         return [
             'orden.required' => 'El numero de orden es requerido.',
             'cliente.required' => 'La identificacion del cliente es requerida.',
+            'nombre.required' => 'el nombre del cliente es requerido.',
             'usuario_id.required' => 'El tecnico asociado a la orden es requerido .',
         ];
     }
